@@ -4,8 +4,9 @@ import sys
 import pygame as pg
 
 
-class Player:
-
+class Agent:
+    playerPos = [0, 0]
+    AGENT = pg.image.load("resources/agent.png").convert_alpha()
 
     def __init__(self):
         pass
@@ -22,13 +23,13 @@ class Player:
     def move_down(self):
         y -= 1
 
-    def show_agent(self, tilesize, SURFACE, PLAYER, playerPos):
-        SURFACE.blit(PLAYER, (playerPos[0] * tilesize, playerPos[1] * tilesize))
+    def show_agent(self, tilesize, SURFACE):
+        SURFACE.blit(self.AGENT, (self.playerPos[0] * tilesize, self.playerPos[1] * tilesize))
 
     def player_pos(self):
         print(x + " " + y)
 
-    def agent_move(self, tilemap, playerPos, MAPWIDTH, MAPHEIGHT):
+    def agent_move(self, tilemap, MAPWIDTH, MAPHEIGHT):
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
@@ -37,31 +38,31 @@ class Player:
             way = random.randint(1, 4)
             # print(way)
             pg.time.wait(200)
-            print("tilemap:" + str(tilemap[playerPos[0]][playerPos[1]]))
+            print("tilemap:" + str(tilemap[self.playerPos[0]][self.playerPos[1]]))
 
-            if way == 1 and playerPos[0] < MAPWIDTH - 1:
-                if playerPos[0] < 15:
-                    if tilemap[playerPos[0] + 1][playerPos[1]] != 2:
-                        playerPos[0] += 1
-                        print(playerPos[0], playerPos[1])
+            if way == 1 and self.playerPos[0]< MAPWIDTH - 1:
+                if self.playerPos[0] < 15:
+                    if tilemap[self.playerPos[0] + 1][self.playerPos[1]] != 2:
+                        self.playerPos[0] += 1
+                        print(self.playerPos[0], self.playerPos[1])
                         break
-            if way == 2 and playerPos[0] > 0:
-                if playerPos[0] < 15:
-                    if tilemap[playerPos[0] - 1][playerPos[1]] != 2:
-                        playerPos[0] -= 1
-                        print(playerPos[0], playerPos[1])
+            if way == 2 and self.playerPos[0] > 0:
+                if self.playerPos[0] < 15:
+                    if tilemap[self.playerPos[0] - 1][self.playerPos[1]] != 2:
+                        self.playerPos[0] -= 1
+                        print(self.playerPos[0], self.playerPos[1])
                         break
-            if way == 3 and playerPos[1] < MAPHEIGHT - 1:
-                if playerPos[0] < 15:
-                    if tilemap[playerPos[0]][playerPos[1] + 1] != 2:
-                        playerPos[1] += 1
-                        print(playerPos[0], playerPos[1])
+            if way == 3 and self.playerPos[1] < MAPHEIGHT - 1:
+                if self.playerPos[0] < 15:
+                    if tilemap[self.playerPos[0]][self.playerPos[1] + 1] != 2:
+                        self.playerPos[1] += 1
+                        print(self.playerPos[0], self.playerPos[1])
                 break
-            if way == 4 and playerPos[1] > 0:
-                if playerPos[0] < 15:
-                    if tilemap[playerPos[0]][playerPos[1] - 1] != 2:
-                        playerPos[1] -= 1
-                        print(playerPos[0], playerPos[1])
+            if way == 4 and self.playerPos[1] > 0:
+                if self.playerPos[0] < 15:
+                    if tilemap[self.playerPos[0]][self.playerPos[1] - 1] != 2:
+                        self.playerPos[1] -= 1
+                        print(self.playerPos[0], self.playerPos[1])
                         break
 
 '''
