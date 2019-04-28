@@ -65,7 +65,7 @@ class Grid:
                 # pg.draw.rect(SURFACE, colors[tilemap[row][column]],
                 # (column*TILESIZE, row*TILESIZE, TILESIZE, TILESIZE))
                 self.SURFACE.blit(self.textures[self.tilemap[row][column]],
-                                  (column * self.TILESIZE, row * self.TILESIZE))
+                                  (row * self.TILESIZE, column * self.TILESIZE))
 
     # to jest pierdolone spaggettii
     def legend(self):
