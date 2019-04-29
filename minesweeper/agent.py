@@ -5,11 +5,11 @@ import pygame as pg
 
 
 class Agent:
-    playerPos = [0, 0]
-    AGENT = pg.image.load("resources/agent.png").convert_alpha()
-
     def __init__(self):
         pass
+    playerPos = [0, 0]
+    AGENT = pg.image.load("resources/agent.png")
+
 
     def move_right(self):
         x += 1
@@ -37,9 +37,9 @@ class Agent:
         while True:
             way = random.randint(1, 4)
             # print(way)
-            pg.time.wait(200)
-            print("tilemap:" + str(tilemap[self.playerPos[0]][self.playerPos[1]]))
 
+            print("tilemap:" + str(tilemap[self.playerPos[0]][self.playerPos[1]]) + " " + str(self.playerPos[0]) + " " + str(self.playerPos[1]))
+            #CZEMU TO NADAL NIE JEST KURWA CASEM TO JA NIE WIEM XD
             if way == 1 and self.playerPos[0]< MAPWIDTH - 1:
                 if self.playerPos[0] < 15:
                     if tilemap[self.playerPos[0] + 1][self.playerPos[1]] != 2:
