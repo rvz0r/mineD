@@ -5,6 +5,7 @@ import pygame as pg
 
 
 class Grid:
+
     # display dimensions
     TILESIZE = 40
     MAPHEIGHT = 15
@@ -22,14 +23,15 @@ class Grid:
     # not accessible
     OBSTACLE = 2
     floor = [GROUND, LANDMINE, OBSTACLE]
+
     # dictionary linking textures with floors
     textures = {
         GROUND: pg.image.load('resources/ground.png'),
         OBSTACLE: pg.image.load('resources/obstacle.png'),
         LANDMINE: pg.image.load('resources/landmine.png')
     }
-    tilemap = []
     # a list representing our tilemap
+    tilemap = []
 
     def __init__(self):
         pass
@@ -67,7 +69,7 @@ class Grid:
                 self.SURFACE.blit(self.textures[self.tilemap[row][column]],
                                   (row * self.TILESIZE, column * self.TILESIZE))
 
-    # to jest pierdolone spaggettii
+    # to jest spaggettii
     def legend(self):
         # creating a new drawing surface
         self.SURFACE = pg.display.set_mode((self.TILESIZE * self.MAPWIDTH, self.TILESIZE * self.MAPHEIGHT + 50))
