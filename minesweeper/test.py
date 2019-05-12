@@ -1,36 +1,39 @@
 from minesweeper.implementation import *
+from minesweeper.grid import *
 
+start, goal = (0, 0), (7, 8)
 
-came_from, cost_so_far = dijkstra_search(diagram4, (1, 4), (7, 8))
-draw_grid(diagram4, width=3, point_to=came_from, start=(1, 4), goal=(7, 13))
+came_from, cost_so_far = a_star_search(diagram4, start, goal)
+draw_grid(diagram4, width=3, point_to=came_from, start=start, goal=goal)
 print()
-draw_grid(diagram4, width=3, number=cost_so_far, start=(1, 4), goal=(7, 13))
+draw_grid(diagram4, width=3, number=cost_so_far, start=start, goal=goal)
 print()
-draw_grid(diagram4, width=3, path=reconstruct_path(came_from, start=(1, 4), goal=(7, 13)))
+draw_grid(diagram4, width=3, path=reconstruct_path(came_from, start=start, goal=goal))
+def goal(tilemap, bombcounter):
+    x = 0
+    y = 0
+    z = 1
+    for x in range(15):
+        if z == 0:
+            break
+        for y in range(15):
+            if tilemap[x][y] == 1:
+                print(x , " " , y)
+                tilemap[x][y] = 0
+                bombcounter -= 1
+                z = 0
+            if z == 0:
+                break
+    z = 0
+    return x, y
+
+def agentmove(start, goal):
+        came_from, cost_so_far = a_star_search(diagram4, start, goal)
+        draw_grid(diagram4, width=3, path=reconstruct_path(came_from, start=start, goal=goal))
+        return reconstruct_path(came_from, start=start, goal=goal)
 
 
-def breadth_first_search_3(graph, start, goal):
-    frontier = Queue()
-    frontier.put(start)
-    came_from = {}
-    came_from[start] = None
-
-    while not frontier.empty():
-        current = frontier.get()
 
 
-        for next in graph.neighbors(current):
-            if next not in came_from:
-                frontier.put(next)
-                came_from[next] = current
-
-    return came_from
-
-
-g = SquareGrid(15, 15)
-
-
-parents = breadth_first_search_3(g, (0, 0), (14, 2))
-draw_grid(g, width=2, point_to=parents, start=(0, 0), goal=(14, 2))
 
 

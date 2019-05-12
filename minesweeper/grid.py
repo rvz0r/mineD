@@ -32,21 +32,23 @@ class Grid:
     }
     # a list representing our tilemap
     tilemap = []
-
+    bombcounter = 0
     def __init__(self):
+
         pass
 
     def generate_tilemap(self):
         # randomly generated flooring
         for rw in range(self.MAPHEIGHT):
             for cl in range(self.MAPWIDTH):
-                num = random.randint(0, 15)
+                num = random.randint(0, 13)
                 if num < 10:
                     tile = self.GROUND
-                elif 10 <= num < 13:
-                    tile = self.OBSTACLE
+
                 else:
                     tile = self.LANDMINE
+                    self.bombcounter += 1
+
                 self.tilemap[rw][cl] = tile
                 self.tilemap[0][0] = self.GROUND
 
