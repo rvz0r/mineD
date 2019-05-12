@@ -9,6 +9,7 @@ class GraphPath:
         self.weights = {}
         self.walls = []
         self.mines = []
+        self.grid_map = {}
 
     def filler(self, tilemap):
         for x in range(15):
@@ -68,10 +69,17 @@ class GraphPath:
     def math(self, grid, start, goal):
         alpha = {}
         x = GraphPath(15,15)
-        grid_map, grid_cost = x.search(grid, start, goal)
+        self.grid_map, grid_cost = x.search(grid, start, goal)
         for i in range(len(grid_cost)):
             for j in range(len(grid.mines)):
                 if list(grid_cost.keys())[i] == grid.mines[j]:
                     alpha[list(grid_cost.keys())[i]] = list(grid_cost.values())[i]
         return alpha
+
+    def path(self, goal):
+        while goal != ( 0, 0):
+            Way = []
+            Way.insert(0, goal)
+            goal = self.grid_map[goal]
+        return Way
 

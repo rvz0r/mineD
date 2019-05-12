@@ -36,6 +36,8 @@ def main():
         # timer = pg.time.get_ticks()
         math_grid.filler(grid.tilemap)
         mines = math_grid.math(math_grid, start, goal)
+        goal = list(mines.keys())[list(mines.values()).index(min(mines.values()))]
+
         grid.display_tilemap()
         # print(timer)
 
