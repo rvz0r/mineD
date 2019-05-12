@@ -10,7 +10,7 @@ class GraphPath:
         self.walls = []
         self.mines = []
 
-    def filler(self,tilemap):
+    def filler(self, tilemap):
         for x in range(15):
             for y in range(15):
                 if tilemap[x][y] == 1:
@@ -64,3 +64,14 @@ class GraphPath:
                     came_from[tuple(next)] = current
 
         return came_from, cost_so_far
+
+    def math(self, grid, start, goal):
+        alpha = {}
+        x = GraphPath(15,15)
+        grid_map, grid_cost = x.search(grid, start, goal)
+        for i in range(len(grid_cost)):
+            for j in range(len(grid.mines)):
+                if list(grid_cost.keys())[i] == grid.mines[j]:
+                    alpha[list(grid_cost.keys())[i]] = list(grid_cost.values())[i]
+        return alpha
+

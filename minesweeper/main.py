@@ -34,8 +34,8 @@ def main():
 
         # clock.tick(120)
         # timer = pg.time.get_ticks()
-        GraphPath.filler(grid.tilemap)
-        mines = GraphPath.math(math_grid, start, goal)
+        math_grid.filler(grid.tilemap)
+        mines = math_grid.math(math_grid, start, goal)
         grid.display_tilemap()
         # print(timer)
 
