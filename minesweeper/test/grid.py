@@ -31,7 +31,6 @@ class Grid:
     tilemap = []
     # a list representing our tilemap
 
-
     def __init__(self):
         pass
 
@@ -47,10 +46,11 @@ class Grid:
                 else:
                     tile = self.LANDMINE
                 self.tilemap[rw][cl] = tile
-        for x in range(0,2):
-            for y in range(0,2):
-                self.tilemap[x][y] = self.GROUND
-
+        self.tilemap[0][0] = self.GROUND
+        self.tilemap[0][1] = self.GROUND
+        self.tilemap[1][0] = self.GROUND
+        self.tilemap[1][1] = self.GROUND
+#TODO() Kiedy na starcie nie ma jak przejść -> generowanie nowego gridu
 
     def set_tilemap(self):
         self.tilemap = [[self.GROUND for w in range(self.MAPWIDTH)] for h in range(self.MAPHEIGHT)]
@@ -108,5 +108,5 @@ class Grid:
         mines = pg.image.load('resources/mines.png')
         self.SURFACE.blit(mines, (placePosition, self.MAPHEIGHT * self.TILESIZE + 5))
         placePosition += 60
-        textObj3 = FONT.render(str(MINES), True, self.WHITE, self.BLACK)
+        textObj3 = FONT.render("3", True, self.WHITE, self.BLACK)
         self.SURFACE.blit(textObj3, (placePosition, self.MAPHEIGHT * self.TILESIZE + 13))

@@ -10,24 +10,8 @@ class Agent:
     playerPos = [0, 0]
     AGENT = pg.image.load("resources/agent.png")
 
-
-    def move_right(self):
-        x += 1
-
-    def move_left(self):
-        x -= 1
-
-    def move_up(self):
-        y += 1
-
-    def move_down(self):
-        y -= 1
-
     def show_agent(self, tilesize, SURFACE):
         SURFACE.blit(self.AGENT, (self.playerPos[0] * tilesize, self.playerPos[1] * tilesize))
-
-    def player_pos(self):
-        print(x + " " + y)
 
     def agent_move(self, tilemap, MAPWIDTH, MAPHEIGHT):
         for event in pg.event.get():

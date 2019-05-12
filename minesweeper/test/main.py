@@ -2,11 +2,8 @@ import random
 
 import pygame as pg
 
-from minesweeper.agent import Agent
-
-from minesweeper.pathfinding import *
-
-from minesweeper.grid import Grid
+from minesweeper.test.agent import Agent
+from minesweeper.test.grid import Grid
 
 # initializing PyGame module
 pg.init()
@@ -24,9 +21,6 @@ grid.legend()
 def main():
     grid.set_tilemap()
     grid.generate_tilemap()
-    math_grid = GraphPath(grid.MAPWIDTH,grid.MAPHEIGHT)
-    math_grid.filler(grid.tilemap)
-
 
     # game loop
     while True:
@@ -35,7 +29,6 @@ def main():
         # clock.tick(120)
         # timer = pg.time.get_ticks()
 
-        came_from, cost_so_far = math_grid.search(math_grid,agent.playerPos, math_grid.mines[0])
         grid.display_tilemap()
         # print(timer)
 
