@@ -1,4 +1,5 @@
 import random
+from minesweeper.pathfinding import GraphPath as gp
 import sys
 
 import pygame as pg
@@ -30,7 +31,6 @@ class Grid:
     }
     tilemap = []
     # a list representing our tilemap
-
 
     def __init__(self):
         pass
