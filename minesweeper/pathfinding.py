@@ -9,7 +9,10 @@ class GraphPath:
         self.weights = {}
         self.walls = []
         self.mines = []
+        self.mines_with_cost = {}
         self.grid_map = {}
+        self.start = (0, 0)
+        self.goal = (14, 14)
 
     def filler(self, tilemap):
         for x in range(15):

@@ -28,7 +28,7 @@ class Grid:
         OBSTACLE: pg.image.load('resources/obstacle.png'),
         LANDMINE: pg.image.load('resources/landmine.png')
     }
-    tilemap = []
+    tilemap = [[0 for w in range(15)] for h in range(15)]
     # a list representing our tilemap
 
     def __init__(self):

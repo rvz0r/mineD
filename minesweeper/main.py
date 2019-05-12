@@ -1,13 +1,8 @@
 import random
 
 import pygame as pg
-
-from minesweeper.agent import Agent
-
-from minesweeper.pathfinding import GraphPath
-
 from minesweeper.grid import Grid
-
+from minesweeper.agent import Agent
 # initializing PyGame module
 pg.init()
 print('This is our intelligent sprite running through a minefield!')
@@ -17,15 +12,12 @@ agent = Agent()
 #grid object
 grid = Grid()
 grid.legend()
-start=(0, 0)
-goal=(14, 14)
 
 
 def main():
     mines = {}
     grid.set_tilemap()
     grid.generate_tilemap()
-    math_grid = GraphPath(15, 15)
 
 
     # game loop
@@ -34,9 +26,6 @@ def main():
 
         # clock.tick(120)
         # timer = pg.time.get_ticks()
-        math_grid.filler(grid.tilemap)
-        mines = math_grid.math(math_grid, start, goal)
-        goal = list(mines.keys())[list(mines.values()).index(min(mines.values()))]
 
         grid.display_tilemap()
         # print(timer)
